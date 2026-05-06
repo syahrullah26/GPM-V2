@@ -24,6 +24,7 @@ class OrderItemResource extends JsonResource
                 'selling_price' => (string) $this->selling_price,
                 'cost_price'    => (string) $this->cost_price,
                 'formatted_selling_price' => 'Rp ' . number_format($this->selling_price, 0, ',', '.'),
+                'formatted_cost_price' => 'Rp ' . number_format($this->cost_price, 0, ',', '.'),
             ],
             'subtotal' => (string) ($this->quantity * $this->selling_price),
             'formatted_subtotal' => 'Rp ' . number_format($this->quantity * $this->selling_price, 0, ',', '.'),
