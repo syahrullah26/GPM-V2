@@ -20,7 +20,7 @@ class DeliveryNoteController extends Controller
     public function index(): JsonResponse
     {
         try {
-            $data = DeliveryNote::latest()->with('orders', 'orders.invoices')->paginate(10);
+            $data = DeliveryNote::latest()->with('orders', 'orders.orderItems', 'orders.invoices')->paginate(10);
             return response()->json([
                 'status' => true,
                 'message' => 'Fetch Delivery Notes Successfully',

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\DeliveryNoteController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\QuotationController;
 use Illuminate\Http\Request;
@@ -11,12 +12,16 @@ Route::prefix('test')->group(function () {
         return response()->json(['status' => 'ok', 'message' => 'Api Succesfully runnign']);
     });
     Route::apiResource('customers', CustomerController::class);
-    Route::apiResource('orders', OrderController::class);
+
     Route::patch('/orders/{id}/status', [OrderController::class, 'updateStatus']);
+    Route::post('/orders/{id}/delivery-note', [OrderController::class, 'generateDeliveryNote']);
+    Route::apiResource('orders', OrderController::class);
 
     Route::patch('/quotations/{id}/reject', [QuotationController::class, 'rejectStatus']);
     Route::post('/quotations/{id}/approve', [QuotationController::class, 'approveStatus']);
     Route::apiResource('quotations', QuotationController::class);
+
+    Route::get('/delivery-note', [DeliveryNoteController::class, 'index']);
 });
 
 

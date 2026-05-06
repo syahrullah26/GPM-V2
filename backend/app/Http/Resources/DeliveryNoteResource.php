@@ -18,7 +18,7 @@ class DeliveryNoteResource extends JsonResource
             'id' => $this->id,
             'delivery_number' => $this->delivery_number,
             'order_id' => $this->order_id,
-            'shipping_date' => $this->shipping_date->format('d m Y'),
+            'shipping_date' => $this->shipping_date,
             'order' => new OrderResource($this->whenLoaded('orders')),
         ];
     }
