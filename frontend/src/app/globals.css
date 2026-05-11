@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8f8ff;
+  --foreground: #1a1a1a;
+  --surface: #faf9f6;
+  --surface-light: #e4e4e7;
+  --surface-accent: #f4f4f0;
+
+  --color-gold-luxury: #d4af37;
+  --color-gold-soft: #f1e5ac;
+  --color-deep-black: #1a1a1a;
+  --color-steel-gray: #4a4a4a;
+  --color-off-white: #faf9f6;
+
+  --sidebar-gap: 1rem;
+  --sidebar-width: 280px;
+}
+
+.dark {
+  --background: #27272a;
+  --foreground: #f8f8ff;
+  --surface: #18181b;
+  --surface-light: #3f3f46;
+  --surface-accent: #202023;
+  --color-steel-gray: #a1a1aa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #27272a;
+    --foreground: #f8f8ff;
+    --color-steel-gray: #a1a1aa;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-surface-accent: var(--surface-accent);
+
+  --color-gold-luxury: var(--color-gold-luxury);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-deep-black: var(--color-deep-black);
+  --color-steel-gray: var(--color-steel-gray);
+  --color-off-white: var(--color-off-white);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), ui-mono, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
